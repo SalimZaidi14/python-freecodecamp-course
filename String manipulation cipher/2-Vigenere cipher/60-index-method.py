@@ -1,12 +1,6 @@
-# Currently, every single letter is always encrypted with the
-#  same letter, depending on the specified offset. What if the 
-# offset were different for each letter? That would be much 
-# more difficult to decrypt. This algorithm is referred to as
-#  the Vigenère cipher, where the offset for each letter is
-#  determined by another text, called the key.
-
-# Start transforming your Caesar cipher into a Vigenère cipher
-#  by removing the two function calls.
+# The .index() method is identical to the .find() method but 
+# it throws a ValueError exception if it is unable to find the
+#  substring.
 
 text = 'Hello Zaira'
 custom_key = "python"
@@ -26,6 +20,8 @@ def vigenere(message, key):
             #you will need to increment key_index after each 
             #iteration
             key_index += 1
+            #define the offset and the encrypted letter
+            offset = alphabet.index(key_char)
             index = alphabet.find(char)
             new_index = (index + offset) % len(alphabet)
             encrypted_text += alphabet[new_index]
