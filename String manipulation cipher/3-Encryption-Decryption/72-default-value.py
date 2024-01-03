@@ -1,17 +1,27 @@
-# Encryption and decryption are opposite processes and 
-# your function can do both with a couple of tweaks.
+# Functions can be called with default arguments. A default argument
+#  indicates the value that the function should take if the
+#  argument is not passed. For example, the function below accepts 
+# three arguments but you can call it passing two arguments. 
+# The third one will assume the specified value by default:
+
+# def foo(a, b, c=value):
+#     <code>
+
+# The .isalpha() method returns True if all the character of the 
+# string on which it is called are letters. For example, the code 
+# below returns True:
 
 text = "Salim Salim Salim Salim Salim Salim Salim"
 custom_key = "python"
 
-def vigenere(message, key, direction):
+def vigenere(message, key, direction=1):
     alphabet = "abcdefghijklmnopqrstuvwxyz"
     final_message = ""
     key_index = 0
 
     for char in message.lower():
         #append space to the message
-        if char == " ":
+        if char.isalpha() == " ":
             final_message += char
         else:
             #find the right key character to encode/decode
@@ -25,23 +35,7 @@ def vigenere(message, key, direction):
 
     return final_message
 
-encryption = vigenere(text, custom_key, 1)
+encryption = vigenere(text, custom_key)
 print(encryption)
 decryption = vigenere(encryption, custom_key, -1)
 print(decryption)
-
-#How the decryption works-
-#when we multiply -1 to offset, we mean negative value of
-#offset.
-
-#first char of text = S
-#first char of key = p
-
-#S + p = h (from hyepa)
-#S + p = 33
-#33%26 = 7 (index of h) hence hyepa
-#S = h - p (p is offset so negative value of p
-#hence we get Salim Zaidi
-
-#ALSO-
-#encryption = final message
